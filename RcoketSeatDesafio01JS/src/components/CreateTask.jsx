@@ -8,12 +8,17 @@ import styles from './CreateTask.module.css'
 
 
 
-export function CreateTask ( {checkedCount} ) {
+export function CreateTask () {
     const [newTask, setNewTask] = useState('')
     const [tasks, setTasks] = useState([]);
     const [tasksCount, setTasksCount] = useState(0)
+    const [getChecked, setGetChecked] = useState(false)
     //const [checkedCount, setCheckedCount] = useState(0)
 
+    const checkedStatus = (id) => {
+        console.log(id)
+        setGetChecked(!checked)
+    }
 
 
     function handleNewTaskChange() {
@@ -26,7 +31,7 @@ export function CreateTask ( {checkedCount} ) {
         setTasks([...tasks, {
             id: tasksCount,
             task: newTask,
-            isChecked: false,
+            isChecked: getChecked,
 
         }])
         setTasksCount(tasks.length+1)
@@ -38,7 +43,7 @@ export function CreateTask ( {checkedCount} ) {
         var filtered = tasks.filter((task) => task.id !== id)
         console.log(filtered)
         setTasks(filtered)
-
+        setTasksCount(tasks.length-1)
     }
 
     // console.log(newTask)
@@ -63,18 +68,17 @@ export function CreateTask ( {checkedCount} ) {
             <div>
             <div className={styles.tasksStatus}>
                 <p>Tarefas Criadas {tasksCount}</p>
-                <p>Concluidas {checkedCount} de {tasksCount}</p>
+                <p>Concluidas Valor de {tasksCount}</p>
             </div>
-                {tasks.map(task => {
-                    
+                {tasks.map(task => {  
                     return (
                         <TaskList
                             key={task.id}
                             task={task}
                             tasks={tasks}
                             deleteTask={deleteTask}
+                            checked={checkedStatus}
                         />
-                        
                     );
                 })}
             </div>

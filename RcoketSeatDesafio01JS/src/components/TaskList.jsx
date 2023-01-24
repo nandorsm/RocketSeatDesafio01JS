@@ -1,24 +1,24 @@
 
-import { useState } from 'react'
+//import { useState } from 'react'
 import styles from './TaskList.module.css'
 
-export function TaskList( {task, tasks, deleteTask} ) {
+export function TaskList( {task, tasks, deleteTask, checkedStatus} ) {
 
 
-    const [checked, setChecked] = useState(false);
-    const [checkedCount, setCheckedCount] = useState(0)
+    //const [checked, setChecked] = useState(false);
+    //const [checkedCount, setCheckedCount] = useState(0)
     
     
     
-    function chekedStatus() {
-        setChecked(!checked)
-        tasks.map((t) => {
-            if(t.isChecked == true){
-                setCheckedCount(checkedCount+1)
-            }
-            return checkedCount
-        })
-    }
+    // function chekedStatus() {
+    //     setChecked(!checked)
+    //     // tasks.map((t) => {
+    //     //     if(t.isChecked == true){
+    //     //         setCheckedCount(checkedCount+1)
+    //     //     }
+    //     //     return checkedCount
+    //     // })
+    // }
     
 
 
@@ -26,7 +26,9 @@ export function TaskList( {task, tasks, deleteTask} ) {
     // tasks.map((t) => {
     //     console.log(t.id)
     // })
-    // console.log(checked)
+    //console.log(checked)
+    console.log(tasks)
+    console.log(task)
     //console.log(checkedCount)
     return(
 
@@ -38,9 +40,10 @@ export function TaskList( {task, tasks, deleteTask} ) {
              
                 <input 
                     type="checkbox" 
-                    checked={checked[0] && checked[1]}
-                    onChange={chekedStatus}
+                    checked={task.isChecked}
+                    onChange={() => checkedStatus(task.id)}
                 />
+                
                 <ul>
                     <li>{task.task}</li>
                 </ul>
