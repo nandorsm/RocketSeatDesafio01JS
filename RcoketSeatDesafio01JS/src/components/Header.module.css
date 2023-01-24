@@ -1,0 +1,30 @@
+.header {
+    height: 200px;
+    background-color: var(--grey-700);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    margin-right: 1rem;
+}
+
+.to {
+    color: #4EA8DE;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 48px;
+}
+
+.do {
+    color: #5E60CE;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 48px;
+}

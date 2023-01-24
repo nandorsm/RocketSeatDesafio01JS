@@ -1,0 +1,35 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+.taskContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 490px;
+    
+}
+
+.taskContainer ul{
+    padding-left: 0.8rem;
+}
+
+.taskContainer li {
+    list-style: none;
+    margin-right: 2rem;
+    color: white;
+}
+
+.taskContainer p {
+    color: grey;
+}
+
+.taskContainer input[type='radio'] {
+    border: blue;
+}
