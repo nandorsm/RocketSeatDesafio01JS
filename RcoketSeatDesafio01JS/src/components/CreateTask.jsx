@@ -11,14 +11,26 @@ import styles from './CreateTask.module.css'
 export function CreateTask () {
     const [newTask, setNewTask] = useState('')
     const [tasks, setTasks] = useState([]);
-    const [tasksCount, setTasksCount] = useState(0)
+    const [totalTaskCount, setTotalTaskCount] = useState(0)
+    //const [trueTotalCount, setTrueTotalCount] = useState([])
     const [getChecked, setGetChecked] = useState(false)
     //const [checkedCount, setCheckedCount] = useState(0)
+    
+
 
     const checkedStatus = (id) => {
-        console.log(id)
-        setGetChecked(!checked)
+        setGetChecked(tasks[id].isChecked = !getChecked)
+        //console.log(getChecked)
+        var copyFalseFilter = [...tasks]
+        var trueFilter = tasks.filter((task) => task.isChecked !== true)
+        var falseFilter = tasks.filter((task) => task.isChecked == false)
+        // taskOrdenada = trueFilter + falseFilter
+        // console.log(tasks)
+        setTasks(trueFilter)
+        //setTasks()
+
     }
+    
 
 
     function handleNewTaskChange() {
@@ -28,14 +40,17 @@ export function CreateTask () {
 
     function handleTasks() {
         event.preventDefault()
+
+
         setTasks([...tasks, {
-            id: tasksCount,
+            id: totalTaskCount,
             task: newTask,
             isChecked: getChecked,
 
         }])
-        setTasksCount(tasks.length+1)
+        setTotalTaskCount(tasks.length+1)
         setNewTask('')
+        
     }
 
     const deleteTask = (id) => {
@@ -43,7 +58,7 @@ export function CreateTask () {
         var filtered = tasks.filter((task) => task.id !== id)
         console.log(filtered)
         setTasks(filtered)
-        setTasksCount(tasks.length-1)
+        setTotalTaskCount(tasks.length-1)
     }
 
     // console.log(newTask)
@@ -67,8 +82,8 @@ export function CreateTask () {
             </div>
             <div>
             <div className={styles.tasksStatus}>
-                <p>Tarefas Criadas {tasksCount}</p>
-                <p>Concluidas Valor de {tasksCount}</p>
+                <p>Tarefas Criadas {totalTaskCount}</p>
+                <p>Concluidas Valor de {totalTaskCount}</p>
             </div>
                 {tasks.map(task => {  
                     return (
@@ -77,7 +92,7 @@ export function CreateTask () {
                             task={task}
                             tasks={tasks}
                             deleteTask={deleteTask}
-                            checked={checkedStatus}
+                            checkedStatus={checkedStatus}
                         />
                     );
                 })}
