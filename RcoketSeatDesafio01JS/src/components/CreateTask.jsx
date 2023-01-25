@@ -12,27 +12,34 @@ export function CreateTask () {
     const [newTask, setNewTask] = useState('')
     const [tasks, setTasks] = useState([]);
     const [totalTaskCount, setTotalTaskCount] = useState(0)
-    //const [trueTotalCount, setTrueTotalCount] = useState([])
+    const [trueTotalCount, setTrueTotalCount] = useState([])
     const [getChecked, setGetChecked] = useState(false)
-    //const [checkedCount, setCheckedCount] = useState(0)
+    const [checkedOrder, setCheckedOrder] = useState(0)
     
+    var copyTasks = []
 
-
+    function ordenar(a, b) {
+        if(a.isChecked < b.isChecked){
+            return -1;
+        }
+        if(a.isChecked > b.isChecked){
+            return 1;
+        }
+    }
+    var listaOrdenada = tasks.sort(ordenar)
+    console.log(listaOrdenada)
     const checkedStatus = (id) => {
         setGetChecked(tasks[id].isChecked = !getChecked)
-        //console.log(getChecked)
-        var copyFalseFilter = [...tasks]
-        var trueFilter = tasks.filter((task) => task.isChecked !== true)
-        var falseFilter = tasks.filter((task) => task.isChecked == false)
-        // taskOrdenada = trueFilter + falseFilter
-        // console.log(tasks)
-        setTasks(trueFilter)
-        //setTasks()
+        var trueFilter = tasks.filter((task) => task.isChecked == true)
+        setTrueTotalCount(trueFilter.length)
+        
+
+        setTasks(listaOrdenada);
+        
+
 
     }
     
-
-
     function handleNewTaskChange() {
         setNewTask(event.target.value)
         
@@ -50,6 +57,7 @@ export function CreateTask () {
         }])
         setTotalTaskCount(tasks.length+1)
         setNewTask('')
+        copyTasks = [...tasks]
         
     }
 
@@ -83,7 +91,7 @@ export function CreateTask () {
             <div>
             <div className={styles.tasksStatus}>
                 <p>Tarefas Criadas {totalTaskCount}</p>
-                <p>Concluidas Valor de {totalTaskCount}</p>
+                <p>Concluidas {trueTotalCount} de {totalTaskCount}</p>
             </div>
                 {tasks.map(task => {  
                     return (

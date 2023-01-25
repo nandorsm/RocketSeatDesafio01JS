@@ -27,8 +27,8 @@ export function TaskList( {task, tasks, deleteTask, checkedStatus} ) {
     //     console.log(t.id)
     // })
     //console.log(checked)
-    console.log(tasks)
-    console.log(task)
+    // console.log(tasks)
+    // console.log(task)
     //console.log(checkedCount)
     return(
 
@@ -37,7 +37,7 @@ export function TaskList( {task, tasks, deleteTask, checkedStatus} ) {
         <div className={styles.mainContainer}>
             
             <div className={styles.taskContainer}>
-             
+
                 <input 
                     type="checkbox" 
                     checked={task.isChecked}
