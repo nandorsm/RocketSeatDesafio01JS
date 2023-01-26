@@ -1,8 +1,30 @@
+.mainDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .createTask {
     width: 100%;
     display: flex;
     justify-content: center;
     margin-top: -1.2rem;
+}
+
+.tasksContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.tasksStatus {
+    width: 48rem;
+    display: flex;
+    justify-content: space-around;
+    color: rgb(55, 101, 255);;
 }
 
 .form input {
@@ -25,8 +47,19 @@
     color: white;
 }
 
-.tasksStatus {
-    display: flex;
-    justify-content: space-around;
-    color: rgb(55, 101, 255);;
+@media (max-width: 510px) {
+    .form input{
+        width: 20rem;;
+    }
+
+    .tasksStatus {
+        width: 38rem;
+        display: flex;
+        justify-content: space-around;
+        color: rgb(55, 101, 255);;
+    }
+
 }
+
+
+

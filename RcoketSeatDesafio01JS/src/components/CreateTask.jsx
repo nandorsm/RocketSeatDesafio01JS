@@ -14,11 +14,10 @@ export function CreateTask () {
     const [totalTaskCount, setTotalTaskCount] = useState(0)
     const [trueTotalCount, setTrueTotalCount] = useState([])
     const [getChecked, setGetChecked] = useState(false)
-    const [checkedOrder, setCheckedOrder] = useState(0)
     
-    var copyTasks = []
 
-    function ordenar(a, b) {
+    // Sorting function
+    function Sorting(a, b) {
         if(a.isChecked < b.isChecked){
             return -1;
         }
@@ -26,29 +25,30 @@ export function CreateTask () {
             return 1;
         }
     }
-    var listaOrdenada = tasks.sort(ordenar)
-    console.log(listaOrdenada)
+
+    // Sorted List
+    var SortedTasks = tasks.sort(Sorting)
+
     const checkedStatus = (id) => {
-        setGetChecked(tasks[id].isChecked = !getChecked)
+        // Changing check state
+        setGetChecked(id.isChecked = !getChecked)
+        
+        // Counting Trues in list
         var trueFilter = tasks.filter((task) => task.isChecked == true)
         setTrueTotalCount(trueFilter.length)
-        
 
-        setTasks(listaOrdenada);
-        
-
-
+        // Setting Sorted List
+        setTasks(SortedTasks);
+        console.log(tasks)
     }
     
     function handleNewTaskChange() {
         setNewTask(event.target.value)
-        
+        setGetChecked(false)
     }
 
     function handleTasks() {
         event.preventDefault()
-
-
         setTasks([...tasks, {
             id: totalTaskCount,
             task: newTask,
@@ -57,8 +57,7 @@ export function CreateTask () {
         }])
         setTotalTaskCount(tasks.length+1)
         setNewTask('')
-        copyTasks = [...tasks]
-        
+
     }
 
     const deleteTask = (id) => {
@@ -71,39 +70,39 @@ export function CreateTask () {
 
     // console.log(newTask)
     // console.log(tasks)
-    //console.log(checkedCount)
-
+    // console.log(checkedCount)
 
     return(
-        <div>
+        <div className={styles.mainDiv}>
             <div className={styles.createTask}>
-            <form onSubmit={handleTasks} className={styles.form}>
-                <input 
-                    name='getNewTask' 
-                    type="text" 
-                    placeholder="Adicione uma nova tarefa"
-                    value={newTask}
-                    onChange={handleNewTaskChange}
-                />
-                <button type='submit'>Criar</button>
-            </form>
+                <form onSubmit={handleTasks} className={styles.form}>
+                    <input 
+                        name='getNewTask' 
+                        type="text" 
+                        placeholder="Adicione uma nova tarefa"
+                        value={newTask}
+                        onChange={handleNewTaskChange}
+                    />
+                    <button type='submit'>Criar</button>
+                </form>
             </div>
-            <div>
-            <div className={styles.tasksStatus}>
-                <p>Tarefas Criadas {totalTaskCount}</p>
-                <p>Concluidas {trueTotalCount} de {totalTaskCount}</p>
-            </div>
-                {tasks.map(task => {  
-                    return (
-                        <TaskList
-                            key={task.id}
-                            task={task}
-                            tasks={tasks}
-                            deleteTask={deleteTask}
-                            checkedStatus={checkedStatus}
-                        />
-                    );
-                })}
+            <div className={styles.tasksContainer}>
+                <div className={styles.tasksStatus}>
+                    <p>Tarefas Criadas {totalTaskCount}</p>
+                    <p>Concluidas {trueTotalCount} de {totalTaskCount}</p>
+                </div>
+                <div>
+                    {tasks.map(task => {  
+                        return (
+                            <TaskList
+                                key={task.id}
+                                task={task}
+                                deleteTask={deleteTask}
+                                checkedStatus={checkedStatus}
+                            />
+                        );
+                    })}
+                </div> 
             </div>
         </div>
         
