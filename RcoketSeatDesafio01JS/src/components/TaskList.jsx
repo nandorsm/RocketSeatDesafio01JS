@@ -3,7 +3,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 import styles from './TaskList.module.css'
 
 export function TaskList( {task, deleteTask, checkedStatus} ) {
-
+    
     return(
         <div className={styles.mainContainer}> 
             <div className={styles.taskContainer}>
@@ -15,7 +15,7 @@ export function TaskList( {task, deleteTask, checkedStatus} ) {
                 <ul>
                     <li><textarea readOnly>{task.task}</textarea></li>
                 </ul>
-                <button type='submit' onClick={() => deleteTask(task.id)}><FaTrashAlt size={20}/> </button>
+                <button type='submit' onClick={() => deleteTask(task)}><FaTrashAlt size={20}/> </button>
             </div>
         </div>
     );

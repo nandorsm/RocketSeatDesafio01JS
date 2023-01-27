@@ -1,0 +1,22 @@
+.mainContainer {
+    width: 33rem;
+    border-top: 1px solid var(--grey-400);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--grey-300);
+}
+
+.mainContainer svg {
+    margin-top: 2.5rem;
+}
+
+.mainContainer p:first-of-type {
+    font-weight: bold;
+    margin-bottom: 0px ;
+}
+.mainContainer p:last-of-type {
+    margin-top: 0.2rem;
+}

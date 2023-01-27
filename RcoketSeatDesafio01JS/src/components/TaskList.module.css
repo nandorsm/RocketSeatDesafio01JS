@@ -57,3 +57,36 @@
 .taskContainer input[type='radio'] {
     border: blue;
 }
+
+@media (max-width: 550px) {
+    .taskContainer {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        width: 28rem;
+        background-color: var(--grey-500);
+        border-radius: 6px;
+        margin-top: 1rem;
+    }
+
+    .taskContainer button {
+        border: none;
+        color: var(--grey-300);
+        background-color: var(--grey-500);
+        cursor: pointer;
+    }
+
+    .taskContainer li textarea {
+        width: 20.5rem;
+        resize: none;
+        border: none;
+        color: white;
+        font-size: 1rem;
+        background-color: var(--grey-500);
+    }
+    .taskContainer ul{
+        width: 21rem;
+        padding-left: 0.8rem;
+        
+    }
+}

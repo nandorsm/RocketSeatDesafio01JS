@@ -5,6 +5,7 @@ import { TaskList } from './TaskList';
 import styles from './CreateTask.module.css'
 
 import { FaPlus } from 'react-icons/fa';
+import { NoTaskScreen } from './NoTaskScreen';
 
 // import { uuid } from 'uuidv4';
 
@@ -45,6 +46,7 @@ export function CreateTask () {
     }
     
     function handleNewTaskChange() {
+        event.target.setCustomValidity('')
         setNewTask(event.target.value)
         setGetChecked(false)
     }
@@ -64,16 +66,26 @@ export function CreateTask () {
 
     const deleteTask = (id) => {
         console.log(id);
-        var filtered = tasks.filter((task) => task.id !== id)
+        var filtered = tasks.filter((task) => task.id !== id.id)
         console.log(filtered)
         setTasks(filtered)
         setTotalTaskCount(tasks.length-1)
-        setTrueTotalCount(trueTotalCount -1)
+        if(id.isChecked == true){
+            setTrueTotalCount(trueTotalCount - 1)
+        }
+        
     }
 
+    function handleNewCommentInvalid () {
+        event.target.setCustomValidity('Este Campo é Obrigatório')
+    }
+
+    
+
     // console.log(newTask)
-    // console.log(tasks)
+    console.log(tasks)
     // console.log(checkedCount)
+    console.log(trueTotalCount)
 
     return(
         <div className={styles.mainDiv}>
@@ -85,6 +97,8 @@ export function CreateTask () {
                         placeholder="Adicione uma nova tarefa"
                         value={newTask}
                         onChange={handleNewTaskChange}
+                        onInvalid={handleNewCommentInvalid}
+                        required
                     />
                     <button className={styles.btn} type='submit'>
                         <span>Criar</span><FaPlus size={8}/>
@@ -98,20 +112,22 @@ export function CreateTask () {
                     
                 </div>
                 <div>
-                    {tasks.map(task => {  
-                        return (
-                            <TaskList
-                                key={task.id}
-                                task={task}
-                                deleteTask={deleteTask}
-                                checkedStatus={checkedStatus}
-                            />
-                        );
-                    })}
-                    
+                    {totalTaskCount == 0 ? <NoTaskScreen/>:
+                        tasks.map(task => {  
+                            return (
+                                <TaskList
+                                    key={task.id}
+                                    task={task}
+                                    deleteTask={deleteTask}
+                                    checkedStatus={checkedStatus}
+                                />
+                            );
+                        })
+                    }
                 </div> 
             </div>
         </div>
         
     );
+    
 }

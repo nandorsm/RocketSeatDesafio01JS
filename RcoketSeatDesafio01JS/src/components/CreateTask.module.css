@@ -9,7 +9,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: -1.2rem;
+    margin-top: -1.5rem;
 }
 
 .tasksContainer {
@@ -44,9 +44,9 @@
 
 .form input {
     height: 3rem;
-    background-color: rgb(58, 58, 58);
+    background-color: var(--grey-400);
     border: 0.1rem solid var(--grey-700);
-    border-radius: 4px;
+    border-radius: 6px;
     width: 25rem;
     margin-right: 0.5rem;
     padding-left: 1rem;
@@ -57,7 +57,7 @@
     width: 6rem;
     border-radius: 10px;
     border: none;
-    background-color: rgb(55, 101, 255);
+    background-color: var(--blueDark);
     color: white;
     text-align: center;
     cursor: pointer;
@@ -74,7 +74,7 @@
     border-radius: 50px;
 }
 
-@media (max-width: 510px) {
+@media (max-width: 550px) {
     .form input{
         width: 20rem;;
     }
@@ -83,7 +83,7 @@
         width: 38rem;
         display: flex;
         justify-content: space-around;
-        color: rgb(55, 101, 255);;
+        color: var(--blue);
     }
 
 }
