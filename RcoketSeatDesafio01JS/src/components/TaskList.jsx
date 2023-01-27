@@ -13,7 +13,7 @@ export function TaskList( {task, deleteTask, checkedStatus} ) {
                     onChange={() => checkedStatus(task)}
                 />
                 <ul>
-                    <li><textarea>{task.task}</textarea></li>
+                    <li><textarea readOnly>{task.task}</textarea></li>
                 </ul>
                 <button type='submit' onClick={() => deleteTask(task.id)}><FaTrashAlt size={20}/> </button>
             </div>

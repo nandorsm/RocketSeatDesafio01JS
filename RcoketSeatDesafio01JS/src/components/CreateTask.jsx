@@ -4,6 +4,8 @@ import { TaskList } from './TaskList';
 
 import styles from './CreateTask.module.css'
 
+import { FaPlus } from 'react-icons/fa';
+
 // import { uuid } from 'uuidv4';
 
 
@@ -66,6 +68,7 @@ export function CreateTask () {
         console.log(filtered)
         setTasks(filtered)
         setTotalTaskCount(tasks.length-1)
+        setTrueTotalCount(trueTotalCount -1)
     }
 
     // console.log(newTask)
@@ -83,13 +86,16 @@ export function CreateTask () {
                         value={newTask}
                         onChange={handleNewTaskChange}
                     />
-                    <button type='submit'>Criar</button>
+                    <button className={styles.btn} type='submit'>
+                        <span>Criar</span><FaPlus size={8}/>
+                    </button>
                 </form>
             </div>
             <div className={styles.tasksContainer}>
                 <div className={styles.tasksStatus}>
-                    <p>Tarefas Criadas {totalTaskCount}</p>
-                    <p>Concluidas {trueTotalCount} de {totalTaskCount}</p>
+                    <p>Tarefas criadas <span className={styles.contador}>{totalTaskCount}</span></p>
+                    <p className={styles.concluidas}>Concluidas <span className={styles.contador}>{trueTotalCount == 0 ? 0 : trueTotalCount} de {totalTaskCount}</span></p>
+                    
                 </div>
                 <div>
                     {tasks.map(task => {  
@@ -102,6 +108,7 @@ export function CreateTask () {
                             />
                         );
                     })}
+                    
                 </div> 
             </div>
         </div>

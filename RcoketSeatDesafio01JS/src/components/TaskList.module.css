@@ -12,8 +12,8 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    width: 30.5rem;
-    background-color: #3A3A3A;
+    width: 32.5rem;
+    background-color: var(--grey-500);
     border-radius: 6px;
     margin-top: 1rem;
 }
@@ -37,19 +37,22 @@
     border: none;
     color: white;
     font-size: 1rem;
-    background-color: #3A3A3A;
+    background-color: var(--grey-500);
 
 }
 
 .taskContainer button {
     border: none;
-    color: white;
-    background-color: #3A3A3A;
+    color: var(--grey-300);
+    background-color: var(--grey-500);
+    cursor: pointer;
     
 }
 
 .taskContainer input {
     margin-left: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
 }
 .taskContainer input[type='radio'] {
     border: blue;

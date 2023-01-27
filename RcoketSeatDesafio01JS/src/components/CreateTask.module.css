@@ -21,30 +21,57 @@
 }
 
 .tasksStatus {
+    margin-top: 2rem;
     width: 48rem;
     display: flex;
     justify-content: space-around;
-    color: rgb(55, 101, 255);;
+    color: var(--blue);
+}
+
+.contador {
+    background-color: rgb(58, 58, 58);
+    border-radius: 8px;
+    padding: 0.1rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    color: #D9D9D9;
+    font-size: 0.9rem;
+}
+
+.concluidas {
+    color: var(--purple)
 }
 
 .form input {
-    height: 2.4rem;
+    height: 3rem;
     background-color: rgb(58, 58, 58);
-    border: 1rem;
-    border-color: black;
+    border: 0.1rem solid var(--grey-700);
     border-radius: 4px;
     width: 25rem;
     margin-right: 0.5rem;
     padding-left: 1rem;
 }
 
-.form button {
-    height: 2.4rem;
-    width: 4rem;
+.btn {
+    height: 3rem;
+    width: 6rem;
     border-radius: 10px;
     border: none;
     background-color: rgb(55, 101, 255);
     color: white;
+    text-align: center;
+    cursor: pointer;
+}
+.btn span {
+    font-size: 1rem;
+    margin-right:0.5rem;
+}
+
+.btn svg{
+    color: var(--grey-100);
+    padding: 2px;
+    border: 2px solid var(--grey-100);
+    border-radius: 50px;
 }
 
 @media (max-width: 510px) {

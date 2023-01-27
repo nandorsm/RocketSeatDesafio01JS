@@ -1,6 +1,21 @@
 :root {
+  --grey-100: #F2F2F2;
+  --grey-200: #D9D9D9;
+  --grey-300: #808080;
+  --grey-400: #333333;
+  --grey-500: #262626;
+  --grey-600: #1A1A1A;
   --grey-700: #0D0D0D;
+  --purple: #8284FA;
+  --purpleDark: #5E60CE;
+  --blue: #4EA8DE;
+  --blueDark: #1E6F9F;
+  --danger: #E25858;
+}
+
+* {
+  font-family: Helvetica, sans-serif;
 }
 body {
-  background-color: #181818;
+  background-color: var(--grey-600);
 }
